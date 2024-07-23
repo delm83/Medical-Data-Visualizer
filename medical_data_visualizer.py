@@ -4,10 +4,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # 1
-df = None
+df = pd.read_csv('medical_examination.csv')
 
 # 2
-df['overweight'] = None
+df['overweight'] = np.where(df['weight'].values/(df['height'].values/100)**2 > 25, 1, 0)
 
 # 3
 
@@ -31,8 +31,9 @@ def draw_cat_plot():
 
 
     # 9
-    fig.savefig('catplot.png')
-    return fig
+    #fig.savefig('catplot.png')
+    print(df['overweight'])
+    return df
 
 
 # 10
@@ -49,12 +50,12 @@ def draw_heat_map():
 
 
     # 14
-    fig, ax = None
+    #fig, ax = None
 
     # 15
 
 
 
     # 16
-    fig.savefig('heatmap.png')
-    return fig
+    #fig.savefig('heatmap.png')
+    #return fig
