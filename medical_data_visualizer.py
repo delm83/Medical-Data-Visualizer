@@ -15,7 +15,7 @@ df[['cholesterol', 'gluc']] = np.where(df[['cholesterol', 'gluc']].values > 1, 1
 # 4
 def draw_cat_plot():
     # 5
-    df_cat = pd.melt(df, value_vars=['active', 'alco', 'cholesterol', 'gluc', 'overweight', 'smoke'])
+    df_cat = pd.melt(df, id_vars=['active', 'alco', 'cholesterol', 'gluc', 'overweight', 'smoke'])
 
 
     # 6
