@@ -26,7 +26,7 @@ def draw_cat_plot():
 
 
     # 6 grouped and reformatted data and calculated counts
-    df_cat = df_cat.groupby(['variable','cardio','value'])['variable'].count().reset_index(name='total')
+    df_cat = df_cat.groupby(['cardio', 'variable', 'value'])['variable'].count().reset_index(name='total')
     
     # 7 prouced chart using seaborn catplot method
     chart = sns.catplot(x='variable', y='total', hue='value', kind='bar', col='cardio', data=df_cat, errorbar=None)
@@ -38,6 +38,7 @@ def draw_cat_plot():
 
     # 9
     fig.savefig('catplot.png')
+    print(df_cat)
     return df
 
 
