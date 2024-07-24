@@ -6,20 +6,20 @@ import numpy as np
 # 1
 df = pd.read_csv('medical_examination.csv')
 
-# 2
+# 2 added overweight column, value is 1 (overweight) if BMI >25 else 0
 df['overweight'] = np.where(df['weight'].values/(df['height'].values/100)**2 > 25, 1, 0)
 
-# 3
+# 3 normalized data by changing cholestorol & gluc values to 1 (bad) if current value is > 1 else 0 (good)
 df[['cholesterol', 'gluc']] = np.where(df[['cholesterol', 'gluc']].values > 1, 1, 0)
 
 # 4
 def draw_cat_plot():
     # 5
-    df_cat = None
+    df_cat = pd.melt(df, value_vars=['active', 'alco', 'cholesterol', 'gluc', 'overweight', 'smoke'])
 
 
     # 6
-    df_cat = None
+    #df_cat = None
     
 
     # 7
@@ -27,12 +27,12 @@ def draw_cat_plot():
 
 
     # 8
-    fig = None
+    #fig = df_cat
 
 
     # 9
     #fig.savefig('catplot.png')
-    print(df)
+    print(df_cat)
     return df
 
 
