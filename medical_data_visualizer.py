@@ -10,7 +10,7 @@ df = pd.read_csv('medical_examination.csv')
 df['overweight'] = np.where(df['weight'].values/(df['height'].values/100)**2 > 25, 1, 0)
 
 # 3
-
+df[['cholesterol', 'gluc']] = np.where(df[['cholesterol', 'gluc']].values > 1, 1, 0)
 
 # 4
 def draw_cat_plot():
@@ -32,7 +32,7 @@ def draw_cat_plot():
 
     # 9
     #fig.savefig('catplot.png')
-    print(df['overweight'])
+    print(df)
     return df
 
 
