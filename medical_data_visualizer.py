@@ -14,24 +14,25 @@ df[['cholesterol', 'gluc']] = np.where(df[['cholesterol', 'gluc']].values > 1, 1
 
 # 4
 def draw_cat_plot():
-    # 5
-    df_cat = pd.melt(df, id_vars=['active', 'alco', 'cholesterol', 'gluc', 'overweight', 'smoke'])
+    # 5 created new dataframe for cat plot
+    df_cat = pd.melt(df, id_vars=['active', 'alco', 'cholesterol', 'gluc', 'overweight', 'smoke', 'cardio'])
 
 
-    # 6
-    #df_cat = None
+    # 6 grouped and reformatted data and calculated counts
+    df_cat = df_cat.groupby(['cardio', 'active', 'alco', 'cholesterol', 'gluc', 'overweight', 'smoke' ]).size().reset_index(name='counts')
     
 
-    # 7
+    # 7 converted data into long format and prouced chart using seaborn catplot method
+    df_cat = pd.melt(df_cat, id_vars=['cardio', 'counts'], value_vars=['active', 'alco', 'cholesterol', 'gluc', 'overweight', 'smoke'])
+    chart = sns.catplot(x='variable', y='counts', hue='value', kind='bar', col='cardio', data=df_cat)
 
-
-
-    # 8
-    #fig = df_cat
+    # 8  Stored output in fig variable
+    
+    fig = chart
 
 
     # 9
-    #fig.savefig('catplot.png')
+    fig.savefig('catplot.png')
     print(df_cat)
     return df
 
