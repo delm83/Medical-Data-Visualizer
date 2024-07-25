@@ -38,30 +38,30 @@ def draw_cat_plot():
 
     # 9
     fig.savefig('catplot.png')
-    print(df_cat)
-    return df
+    return fig
 
 
 # 10
 def draw_heat_map():
-    # 11
-    df_heat = None
+    # 11 dataframe already cleaned after step 3
+    df_heat = df
 
-    # 12
-    corr = None
+    # 12 calculate correlation matrix
+    corr = round(df_heat.corr(), 1)
 
-    # 13
-    mask = None
+    # 13 Data masking is a technique used to selectively highlight or hide certain data points based on specific conditions. This can help focus attention on particular areas of interest or patterns within the dataset.
+    # it is used here to mask the top portion of the heatmap
+    mask = np.triu(np.ones_like(corr, dtype=bool))
 
+    # 14 Setting up the matplotlib figure
+    fig, ax = plt.subplots()
 
+    # 15 plot correlation matrix using seaborn heatmap
+    sns.heatmap(corr, annot=True, mask = mask, ax = ax)
 
-    # 14
-    #fig, ax = None
-
-    # 15
-
-
+    # prevent labels being cut off in png
+    plt.tight_layout()
 
     # 16
-    #fig.savefig('heatmap.png')
-    #return fig
+    fig.savefig('heatmap.png')
+    return fig
