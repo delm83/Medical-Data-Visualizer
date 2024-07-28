@@ -14,7 +14,7 @@ df[['cholesterol', 'gluc']] = np.where(df[['cholesterol', 'gluc']].values > 1, 1
 
 # 4
 def draw_cat_plot():
-    # 5 created new dataframe for cat plot in long format
+    # 5 created new dataframe for cat plot using melt to reformat it from wide to long format
     df_cat = pd.melt(df, id_vars=['cardio'], value_vars=['active', 'alco', 'cholesterol', 'gluc', 'overweight', 'smoke'])
 
     # 6 grouped and reformatted data and calculated counts
